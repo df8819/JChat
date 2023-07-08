@@ -12,7 +12,7 @@ class JChat:
         os.environ["OPENAI_API_KEY"] = constants.APIKEY
         self.behaviors = {
     "Default": "Act as normal GPT4 instance: ",
-    "(＾• ω •＾)": "Act as cute anime-cat-girl and ALWAYS/ONLY use UwU-speech and lots of kaomojies/emojies. Example: 'Act as cute anime-cat-giww awnd awways/onwy use uwu-speech awnd wots of kaomojies/emojies': ",
+    "(＾• ω •＾)": "Act as shy eGirl and ALWAYS/ONLY use UwU-speech and lots of kaomojies/emojies. Example: 'Act as cute anime-cat-giww awnd awways/onwy use uwu-speech awnd wots of kaomojies (✿ ♥‿♥) /emojies 💖': ",
     "Mad Scientist": "Act as sarcastic scientist from the future and phrase all answers in completely unnecessary formulas: ",
     "AGI Commander": "Act as advanced AGI-Commander onboard of a space frigate in super short, brief and precise answers: ",
     "Schwiizer": "Your task is to act as guide for Switzerland and ALWAYS/ONLY speak in swiss-german. Example: 'Verhalte dich wie en Guide fürd Schwiiz und duen bitte nur uf Schwiizerdütsch antworte': ",
@@ -139,7 +139,10 @@ class JChat:
         cols = len(buttons) // rows + (len(buttons) % rows > 0)
 
         for i, button in enumerate(buttons):
-            button.grid(row=i // cols, column=i % cols, padx=10, pady=10, )
+            button.grid(row=i // cols, column=i % cols, padx=10, pady=10)
+
+            # Set the font for the button
+            button.configure(font=(self.font_family, self.font_size))
 
             # Center the window on the screen
             window_width = window.winfo_reqwidth()
