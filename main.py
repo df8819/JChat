@@ -141,6 +141,15 @@ class JChat:
         for i, button in enumerate(buttons):
             button.grid(row=i // cols, column=i % cols, padx=10, pady=10, )
 
+            # Center the window on the screen
+            window_width = window.winfo_reqwidth()
+            window_height = window.winfo_reqheight()
+            screen_width = window.winfo_screenwidth()
+            screen_height = window.winfo_screenheight()
+            x = (screen_width // 2) - (window_width // 2)
+            y = (screen_height // 3) - (window_height // 2)
+            window.geometry(f"+{x}+{y}")
+
     def run(self):
         self.root.mainloop()
 
