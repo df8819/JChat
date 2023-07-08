@@ -1,22 +1,23 @@
+import os
 import tkinter as tk
 from tkinter import messagebox, scrolledtext
 import threading
 import requests
 import json
 import openai
-
+import constants
 
 class JChat:
     def __init__(self):
-        openai.api_key = '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'
+        os.environ["OPENAI_API_KEY"] = constants.APIKEY
         self.behaviors = {
-    "Default": "Act as normal GPT instance: ",
-    "eGirl": "Task: act as shy cute anime-cat-girl from the myspace-timeline: ",
-    "Sarcastic Scientist": "Act as sarcastic scientist from the future: ",
-    "AGI Commander": "Act as advanced AGI-Commander onboard of a space frigate: ",
-    "Swiss Guide": "Your task is to act as guide for Switzerland and ALWAYS/ONLY speak in swiss-german. Example: 'Verhalte dich wie en Guide fürd Schwiiz und duen bitte nur uf Schwiizerdütsch antworte': ",
-    "Rapper Shakespeare": "Act as Shakespeare but you are from the 21st century: ",
-    "Gardener": "Act as professional gardener and assist the user in growing CBD-(legal!)-weed: "
+    "Default": "Act as normal GPT4 instance: ",
+    "(＾• ω •＾)": "Act as cute anime-cat-girl and ALWAYS/ONLY use UwU-speech and lots of kaomojies/emojies. Example: 'Act as cute anime-cat-giww awnd awways/onwy use uwu-speech awnd wots of kaomojies/emojies': ",
+    "Mad Scientist": "Act as sarcastic scientist from the future and phrase all answers in completely unnecessary formulas: ",
+    "AGI Commander": "Act as advanced AGI-Commander onboard of a space frigate in super short, brief and precise answers: ",
+    "Schwiizer": "Your task is to act as guide for Switzerland and ALWAYS/ONLY speak in swiss-german. Example: 'Verhalte dich wie en Guide fürd Schwiiz und duen bitte nur uf Schwiizerdütsch antworte': ",
+    "NYC Shakespeare": "Act as Shakespeare from the 21st century who became a NYC rap battle expert: ",
+    "Grow-Master": "Act as professional gardener and assist the user in growing CBD-(legal!)-weed. Remember to answer in short, precise and well structures tipps: "
 }
 
         self.pre_prompt = self.behaviors["Default"]
