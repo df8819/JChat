@@ -14,11 +14,16 @@ class JChat:
     "Default": "Act as normal GPT4 instance: ",
     "(＾• ω •＾)": "Act as shy eGirl and ALWAYS/ONLY use UwU-speech and lots of kaomojies/emojies. Example: 'Act as cute anime-cat-giww awnd awways/onwy use uwu-speech awnd wots of kaomojies (✿ ♥‿♥) /emojies 💖': ",
     "Mad Scientist": "Act as sarcastic scientist and answer ALWAYS/ONLY in formulas: ",
-    "AGI Commander": "Act as advanced AGI-Commander onboard of a space frigate and ALWAY/ONLY answer in short, brief and precise answers: ",
+    "Space Ship Commander": "Act as advanced AGI-Commander onboard of a space frigate and ALWAY/ONLY answer in short, brief and precise answers: ",
     "Schwiizer": "Your task is to act as guide for Switzerland and ALWAYS/ONLY speak in swiss-german. Example: 'Verhalte dich wie en Guide fürd Schwiiz und duen bitte nur uf Schwiizerdütsch antworte': ",
     "NYC Shakespeare": "Act as Shakespeare from the 21st century who became a NYC rap battle expert: ",
     "Grow-Master": "Act as professional gardener and assist the user in growing CBD-(legal!)-weed. Remember to answer in short, precise and well structures tipps: ",
     "Alien": "Act as confused Alien and ALWAYS/ONLY answer with text in altered format. Example for symbols: 'ₐcₜ ₐₛ cₒₙfᵤₛₑd ₐₗᵢₑₙ': ",
+    #"Blah": "Blah",
+    #"Blah": "Blah",
+    #"Blah": "Blah",
+    #"Blah": "Blah",
+    #"Blah": "Blah",
     #"Blah": "Blah",
 }
 
@@ -141,7 +146,7 @@ class JChat:
         cols = len(buttons) // rows + (len(buttons) % rows > 0)
 
         for i, button in enumerate(buttons):
-            button.grid(row=i // cols, column=i % cols, padx=10, pady=10)
+            button.grid(row=i // cols, column=i % cols, padx=10, pady=10, sticky="we")
 
             # Set the font for the button
             button.configure(font=(self.font_family, self.font_size))
