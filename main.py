@@ -7,12 +7,17 @@ from tkinter import messagebox, scrolledtext
 import openai
 import requests
 
-import constants
 
 
 class JChat:
     def __init__(self):
-        os.environ["OPENAI_API_KEY"] = constants.APIKEY
+        self.api_key = self.load_or_request_api_key()
+        os.environ["OPENAI_API_KEY"] = self.api_key
+
+        if self.api_key is not None:
+            os.environ["OPENAI_API_KEY"] = self.api_key
+        else:
+            raise ValueError("API key is missing")
 
         self.loop_text = None  # to store the looped text
         self.loop_thread = None  # to store the loop thread
@@ -35,7 +40,9 @@ class JChat:
                            "to answer in short, precise and well structures tipps: ",
             "Alien": "Act as confused Alien from G581c that wants to stay unnoticed and ALWAYS/ONLY answer with text "
                      "in altered format. Example for symbols: 'Ａｃｔ　ａｓ　ｃｏｎｆｕｓｅｄ　Ａｌｉｅｎ': ",
-            # "Blah": "Blah",
+            "Code-Guru": "Act as senior Software engineer from a world leading dev-team "
+                         "who will assist the user in all coding related questions with "
+                         "great precision and correct answers after this semicolon; ",
             # "Blah": "Blah",
             # "Blah": "Blah",
             # "Blah": "Blah",
@@ -90,10 +97,70 @@ class JChat:
                                        font=(self.font_family, self.font_size))
         cancel_loop_button.pack(side="right", padx=10, pady=10)
 
+        api_key_button = tk.Button(btn_frame, text="API Key", command=self.set_api_key,
+                                   font=(self.font_family, self.font_size))
+        api_key_button.pack(side="right", padx=10, pady=10)
+
+
         self.root.grid_rowconfigure(0, weight=1)
         self.root.grid_columnconfigure(0, weight=1)
         self.root.grid_rowconfigure(1, weight=0)
         self.root.grid_columnconfigure(1, weight=1)
+
+    def load_or_request_api_key(self, filename: str = "apikey.json"):
+        """Load API key from file or create a placeholder file."""
+
+        # API key file structure
+        data_structure = {
+            "api_key": "<your-api-key-here>"
+        }
+
+        # If file doesn't exist, create a placeholder file
+        if not os.path.exists(filename):
+            with open(filename, 'w') as f:
+                json.dump(data_structure, f)
+                print(f"No API key found. A placeholder file named {filename} has been created.")
+                print("Please enter your API key in this file in the place of <your-api-key-here>.")
+                return "<your-api-key-here>"
+
+        # If file exists, load the API key
+        else:
+            with open(filename, 'r') as f:
+                data = json.load(f)
+                api_key = data.get('api_key')
+                if not api_key or api_key == "<your-api-key-here>":
+                    print("Please replace <your-api-key-here> in the API key file with your actual API key.")
+                    return "<your-api-key-here>"
+                else:
+                    return api_key
+
+    def set_api_key(self):
+        def on_set_api_key():
+            new_key = entry.get()
+            self.api_key = new_key
+            os.environ["OPENAI_API_KEY"] = self.api_key
+            openai.api_key = self.api_key
+            filename = os.path.join(os.path.dirname(__file__), 'apikey.json')
+            print(f"Writing API key to: {filename}")
+            with open(filename, 'w') as file:
+                json.dump({'api_key': new_key}, file)
+            api_key_window.destroy()
+
+        api_key_window = tk.Toplevel(self.root)
+        api_key_window.title("API Key")
+
+        label = tk.Label(api_key_window, text="Enter new API Key: ", font=(self.font_family, self.font_size))
+        label.pack(padx=10, pady=10)
+
+        entry = tk.Entry(api_key_window, font=(self.font_family, self.font_size))
+        entry.pack(padx=10, pady=5)
+
+        set_api_key_button = tk.Button(api_key_window, text="Set API Key", command=on_set_api_key,
+                                       font=(self.font_family, self.font_size))
+        set_api_key_button.pack(padx=10, pady=10)
+
+        self.center_window(api_key_window)
+        api_key_window.wait_window()  # Block until the window is destroyed
 
     def center_window(self, window):
         window_width = 760
@@ -204,7 +271,7 @@ class JChat:
 
                     # Perform another command with the completion here
                     # Example: Call another function with completion as an argument
-                    # another_function(completion)
+                    # another_function(completion)...
 
                 else:
                     print("An error occurred:", response.text)
