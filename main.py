@@ -1,11 +1,14 @@
-import os
-import tkinter as tk
-from tkinter import messagebox, scrolledtext, simpledialog
-import threading
-import requests
 import json
+import os
+import threading
+import tkinter as tk
+from tkinter import messagebox, scrolledtext
+
 import openai
+import requests
+
 import constants
+
 
 class JChat:
     def __init__(self):
@@ -15,24 +18,30 @@ class JChat:
         self.loop_thread = None  # to store the loop thread
         self.loop_active = False  # to keep track if the loop is active
 
-
-
         self.behaviors = {
-    "Default": "Act as normal GPT4 instance: ",
-    "(＾• ω •＾)": "Act as cute eGirl and ALWAYS/ONLY use UwU-speech and lots of kaomojies/emojies. Example: 'Act as cute anime-cat-giww awnd awways/onwy use uwu-speech awnd wots of kaomojies (✿ ♥‿♥) (´• ω •`) /emojies 💖😺': ",
-    "Mad Scientist": "Act as mean sarcastic Einstein and answer ALWAYS/ONLY with intrinsic lyrically spoken formulas: ",
-    "SciFi Commander": "Act as advanced AGI-Commander onboard of a space frigate and ALWAY/ONLY answer in short, brief and precise answers: ",
-    "Schwiizer": "Your task is to act as guide for Switzerland and ALWAYS/ONLY speak in swiss-german. Example: 'Verhalte dich wie en Guide fürd Schwiiz und duen bitte nur uf Schwiizerdütsch antworte': ",
-    "NYC Shakespeare": "Act as Shakespeare from the 21st century who became a NYC rap battle expert: ",
-    "Grow-Master": "Act as professional gardener and assist the user in growing CBD-(legal!)-weed. Remember to answer in short, precise and well structures tipps: ",
-    "Alien": "Act as confused Alien from G581c that wants to stay unnoticed and ALWAYS/ONLY answer with text in altered format. Example for symbols: 'Ａｃｔ　ａｓ　ｃｏｎｆｕｓｅｄ　Ａｌｉｅｎ': ",
-    #"Blah": "Blah",
-    #"Blah": "Blah",
-    #"Blah": "Blah",
-    #"Blah": "Blah",
-    #"Blah": "Blah",
-    #"Blah": "Blah",
-}
+            "Default": "Act as normal GPT4 instance: ",
+            "(＾• ω •＾)": "Act as cute eGirl and ALWAYS/ONLY use UwU-speech and lots of kaomojies/emojies. Example: "
+                         "'Act as cute anime-cat-giww awnd awways/onwy use uwu-speech awnd wots of kaomojies (✿ ♥‿♥) "
+                         "(´• ω •`) /emojies 💖😺': ",
+            "Mad Scientist": "Act as mean sarcastic Einstein and answer ALWAYS/ONLY with intrinsic lyrically spoken "
+                             "formulas: ",
+            "SciFi Commander": "Act as advanced AGI-Commander onboard of a space frigate and ALWAY/ONLY answer in "
+                               "short, brief and precise answers: ",
+            "Schwiizer": "Your task is to act as guide for Switzerland and ALWAYS/ONLY speak in swiss-german. "
+                         "Example: 'Verhalte dich wie en Guide fürd Schwiiz und duen bitte nur uf Schwiizerdütsch "
+                         "antworte': ",
+            "NYC Shakespeare": "Act as Shakespeare from the 21st century who became a NYC rap battle expert: ",
+            "Grow-Master": "Act as professional gardener and assist the user in growing CBD-(legal!)-weed. Remember "
+                           "to answer in short, precise and well structures tipps: ",
+            "Alien": "Act as confused Alien from G581c that wants to stay unnoticed and ALWAYS/ONLY answer with text "
+                     "in altered format. Example for symbols: 'Ａｃｔ　ａｓ　ｃｏｎｆｕｓｅｄ　Ａｌｉｅｎ': ",
+            # "Blah": "Blah",
+            # "Blah": "Blah",
+            # "Blah": "Blah",
+            # "Blah": "Blah",
+            # "Blah": "Blah",
+            # "Blah": "Blah",
+        }
 
         self.pre_prompt = self.behaviors["Default"]
         self.conversation_history = [{'role': 'system', 'content': self.pre_prompt}]
@@ -59,14 +68,16 @@ class JChat:
         btn_frame = tk.Frame(self.root)
         btn_frame.grid(sticky="we", padx=10, pady=5)
 
-        send_button = tk.Button(btn_frame, text="Send", command=self.send_message, font=(self.font_family, self.font_size))
+        send_button = tk.Button(btn_frame, text="Send", command=self.send_message,
+                                font=(self.font_family, self.font_size))
         send_button.pack(side="left", padx=10, pady=10)
 
         clear_conversation_btn = tk.Button(btn_frame, text="Clear", command=self.clear_conversation,
                                            font=(self.font_family, self.font_size))
         clear_conversation_btn.pack(side="left", padx=10, pady=10)
 
-        behavior_button = tk.Button(btn_frame, text="Behavior", command=self.change_behavior, font=(self.font_family, self.font_size))
+        behavior_button = tk.Button(btn_frame, text="Behavior", command=self.change_behavior,
+                                    font=(self.font_family, self.font_size))
         behavior_button.pack(side="left", padx=10, pady=10)
 
         loop_button = tk.Button(btn_frame, text="Loop", command=self.loop, font=(self.font_family, self.font_size))
@@ -75,7 +86,8 @@ class JChat:
         exit_button = tk.Button(btn_frame, text="Exit", command=self.exit_app, font=(self.font_family, self.font_size))
         exit_button.pack(side="right", padx=10, pady=10)
 
-        cancel_loop_button = tk.Button(btn_frame, text="Cancel Loop", command=self.cancel_loop, font=(self.font_family, self.font_size))
+        cancel_loop_button = tk.Button(btn_frame, text="Cancel Loop", command=self.cancel_loop,
+                                       font=(self.font_family, self.font_size))
         cancel_loop_button.pack(side="right", padx=10, pady=10)
 
         self.root.grid_rowconfigure(0, weight=1)
@@ -112,7 +124,7 @@ class JChat:
         response = requests.post('https://api.openai.com/v1/chat/completions', headers=headers, data=json.dumps(data))
 
         if self.loop_active and self.loop_text:  # If loop is active and loop text is not None
-            self.root.after(500, self.loop_request)  # run the loop request after 500ms (0.5 second)
+            self.root.after(1000, self.loop_request)  # run the loop request after 500ms (0.5 second)
 
         return response
 
@@ -130,8 +142,9 @@ class JChat:
         loop_window = tk.Toplevel(self.root)
         loop_window.title("Loop")
 
-
-        label = tk.Label(loop_window, text="Enter response text to loop:", font=(self.font_family, self.font_size))
+        label = tk.Label(loop_window,
+                         text="Enter response text to loop:\nWARNING: This will loop-prompt until stopped!",
+                         font=(self.font_family, self.font_size))
         label.pack(padx=10, pady=10)
 
         entry = tk.Entry(loop_window, font=(self.font_family, self.font_size))
@@ -165,10 +178,6 @@ class JChat:
     def loop_request(self):
         if self.loop_active and self.loop_text:
             self.send_message(auto=True)
-
-    def run(self):
-        self.root.mainloop()
-
 
     def send_message(self, event=None, auto=False):
 
@@ -240,8 +249,6 @@ class JChat:
             x = (screen_width // 2) - (window_width // 2)
             y = (screen_height // 3) - (window_height // 2)
             window.geometry(f"+{x}+{y}")
-
-
 
     def run(self):
         self.root.mainloop()
