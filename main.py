@@ -118,10 +118,45 @@ class JChat:
 
     def loop(self):
         if not self.loop_active:
-            self.loop_text = simpledialog.askstring("Loop", "Enter response text to loop")
-            if self.loop_text:
-                self.loop_active = True
-                self.loop_request()
+            self.loop_dialog()
+
+    def loop_dialog(self):
+        def on_loop():
+            self.loop_active = True
+            self.loop_text = entry.get()
+            loop_window.destroy()
+            self.loop_request()
+
+        loop_window = tk.Toplevel(self.root)
+        loop_window.title("Loop")
+
+
+        label = tk.Label(loop_window, text="Enter response text to loop:", font=(self.font_family, self.font_size))
+        label.pack(padx=10, pady=10)
+
+        entry = tk.Entry(loop_window, font=(self.font_family, self.font_size))
+        entry.pack(padx=10, pady=5)
+
+        loop_button = tk.Button(loop_window, text="Loop", command=on_loop, font=(self.font_family, self.font_size))
+        loop_button.pack(padx=10, pady=10)
+
+        # Set the font for the labels and button
+        label.configure(font=(self.font_family, self.font_size))
+        entry.configure(font=(self.font_family, self.font_size))
+        loop_button.configure(font=(self.font_family, self.font_size))
+
+        # Set the geometry of the loop window
+        window_width = 400  # Change this value as desired
+        window_height = 200  # Change this value as desired
+        screen_width = loop_window.winfo_screenwidth()
+        screen_height = loop_window.winfo_screenheight()
+        x = (screen_width - window_width) // 2
+        y = (screen_height - window_height) // 3
+        loop_window.geometry(f"{window_width}x{window_height}+{x}+{y}")
+
+        loop_window.transient(self.root)
+        loop_window.grab_set()
+        self.root.wait_window(loop_window)
 
     def cancel_loop(self):
         self.loop_active = False
