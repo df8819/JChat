@@ -9,6 +9,8 @@ Functionalities:
 - The conversation history is displayed in a scrollable text area.
 - Users can clear the conversation history by clicking the "Clear" button.
 - Users can change the chatbot's behavior by clicking the "Behavior" button, which opens a selection window with predefined behaviors.
+- Users can loop pre defined answers by clicking the "Loop" button, which opens an entry field for the text to loop.
+- Users can Cancel the loop by clicking "Cancel Loop".
 - Users can exit the application by clicking the "Exit" button.
 
 
