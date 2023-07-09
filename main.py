@@ -14,10 +14,10 @@ class JChat:
         self.api_key = self.load_or_request_api_key()
         os.environ["OPENAI_API_KEY"] = self.api_key
 
-        if self.api_key is not None:
-            os.environ["OPENAI_API_KEY"] = self.api_key
-        else:
+        if self.api_key is None or self.api_key == "":
             raise ValueError("API key is missing")
+
+        openai.api_key = self.api_key  # Assign the API key to openai.api_key
 
         self.loop_text = None  # to store the looped text
         self.loop_thread = None  # to store the loop thread
@@ -110,41 +110,41 @@ class JChat:
     def load_or_request_api_key(self, filename: str = "apikey.json"):
         """Load API key from file or create a placeholder file."""
 
-        # API key file structure
-        data_structure = {
-            "api_key": "<your-api-key-here>"
-        }
-
         # If file doesn't exist, create a placeholder file
         if not os.path.exists(filename):
+            data_structure = {
+                "api_key": "<your-api-key-here>"
+            }
             with open(filename, 'w') as f:
                 json.dump(data_structure, f)
-                print(f"No API key found. A placeholder file named {filename} has been created.")
-                print("Please enter your API key in this file in the place of <your-api-key-here>.")
-                return "<your-api-key-here>"
+            print(f"No API key found. A placeholder file named {filename} has been created.")
+            print("Please enter your API key in this file in the place of <your-api-key-here>.")
+            return ""
 
         # If file exists, load the API key
-        else:
-            with open(filename, 'r') as f:
-                data = json.load(f)
-                api_key = data.get('api_key')
-                if not api_key or api_key == "<your-api-key-here>":
-                    print("Please replace <your-api-key-here> in the API key file with your actual API key.")
-                    return "<your-api-key-here>"
-                else:
-                    return api_key
+        with open(filename, 'r') as f:
+            data = json.load(f)
+            api_key = data.get('api_key')
+            if not api_key or api_key == "<your-api-key-here>":
+                print("Please replace <your-api-key-here> in the API key file with your actual API key.")
+                return ""
+            else:
+                return api_key
 
     def set_api_key(self):
         def on_set_api_key():
             new_key = entry.get()
-            self.api_key = new_key
-            os.environ["OPENAI_API_KEY"] = self.api_key
-            openai.api_key = self.api_key
-            filename = os.path.join(os.path.dirname(__file__), 'apikey.json')
-            print(f"Writing API key to: {filename}")
-            with open(filename, 'w') as file:
-                json.dump({'api_key': new_key}, file)
-            api_key_window.destroy()
+            if new_key == "":
+                messagebox.showerror("Error", "API Key cannot be empty.")
+            else:
+                self.api_key = new_key
+                os.environ["OPENAI_API_KEY"] = self.api_key
+                openai.api_key = self.api_key
+                filename = os.path.join(os.path.dirname(__file__), 'apikey.json')
+                print(f"Writing API key to: {filename}")
+                with open(filename, 'w') as file:
+                    json.dump({'api_key': new_key}, file)
+                api_key_window.destroy()
 
         api_key_window = tk.Toplevel(self.root)
         api_key_window.title("API Key")
