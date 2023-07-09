@@ -1,6 +1,6 @@
 import os
 import tkinter as tk
-from tkinter import messagebox, scrolledtext
+from tkinter import messagebox, scrolledtext, simpledialog
 import threading
 import requests
 import json
@@ -10,6 +10,13 @@ import constants
 class JChat:
     def __init__(self):
         os.environ["OPENAI_API_KEY"] = constants.APIKEY
+
+        self.loop_text = None  # to store the looped text
+        self.loop_thread = None  # to store the loop thread
+        self.loop_active = False  # to keep track if the loop is active
+
+
+
         self.behaviors = {
     "Default": "Act as normal GPT4 instance: ",
     "(＾• ω •＾)": "Act as cute eGirl and ALWAYS/ONLY use UwU-speech and lots of kaomojies/emojies. Example: 'Act as cute anime-cat-giww awnd awways/onwy use uwu-speech awnd wots of kaomojies (✿ ♥‿♥) (´• ω •`) /emojies 💖😺': ",
@@ -62,8 +69,14 @@ class JChat:
         behavior_button = tk.Button(btn_frame, text="Behavior", command=self.change_behavior, font=(self.font_family, self.font_size))
         behavior_button.pack(side="left", padx=10, pady=10)
 
+        loop_button = tk.Button(btn_frame, text="Loop", command=self.loop, font=(self.font_family, self.font_size))
+        loop_button.pack(side="left", padx=10, pady=10)
+
         exit_button = tk.Button(btn_frame, text="Exit", command=self.exit_app, font=(self.font_family, self.font_size))
         exit_button.pack(side="right", padx=10, pady=10)
+
+        cancel_loop_button = tk.Button(btn_frame, text="Cancel Loop", command=self.cancel_loop, font=(self.font_family, self.font_size))
+        cancel_loop_button.pack(side="right", padx=10, pady=10)
 
         self.root.grid_rowconfigure(0, weight=1)
         self.root.grid_columnconfigure(0, weight=1)
@@ -97,10 +110,38 @@ class JChat:
         }
 
         response = requests.post('https://api.openai.com/v1/chat/completions', headers=headers, data=json.dumps(data))
+
+        if self.loop_active and self.loop_text:  # If loop is active and loop text is not None
+            self.root.after(500, self.loop_request)  # run the loop request after 500ms (0.5 second)
+
         return response
 
-    def send_message(self, event=None):
-        user_message = self.text_input.get()
+    def loop(self):
+        if not self.loop_active:
+            self.loop_text = simpledialog.askstring("Loop", "Enter response text to loop")
+            if self.loop_text:
+                self.loop_active = True
+                self.loop_request()
+
+    def cancel_loop(self):
+        self.loop_active = False
+        self.loop_text = None
+
+    def loop_request(self):
+        if self.loop_active and self.loop_text:
+            self.send_message(auto=True)
+
+    def run(self):
+        self.root.mainloop()
+
+
+    def send_message(self, event=None, auto=False):
+
+        if not auto:
+            user_message = self.text_input.get()
+        else:
+            user_message = self.loop_text
+
         if user_message == 'exit':
             if messagebox.askokcancel("Quit", "Do you really want to quit?"):
                 self.root.destroy()
@@ -116,6 +157,11 @@ class JChat:
                     self.conversation.insert(tk.END, "JChat: " + completion + '\n\n')
                     self.conversation_history.append({'role': 'assistant', 'content': completion})
                     self.conversation.see(tk.END)
+
+                    # Perform another command with the completion here
+                    # Example: Call another function with completion as an argument
+                    # another_function(completion)
+
                 else:
                     print("An error occurred:", response.text)
 
@@ -159,6 +205,8 @@ class JChat:
             x = (screen_width // 2) - (window_width // 2)
             y = (screen_height // 3) - (window_height // 2)
             window.geometry(f"+{x}+{y}")
+
+
 
     def run(self):
         self.root.mainloop()
