@@ -28,7 +28,7 @@ A simple App that uses the 'gpt-3.5-turbo-16k' model to create a GPT-Chatbot _(M
 ## Functionalities
 - Normal Chat via Send button / Enter
 - Clear Chat to clean up the Window _(does not delete saved chat conversation)_
-- Change the behavior of JChat. Messy but fun😅 _(Default will act as the 'As an AI language model...' we all love😋)
+- Change the behavior. Messy but fun😅 _(Default will act as the 'As an AI language model...' we all love😋)
 - Loop pre-defined answers endlessly. ❗WARNING❗ - This is an experimental feature and will burn your API limits if not watched carefully! _('Cancel Loop' will immediately stop this function!)_
 - Click 'API Key' to insert your key. The app will not work without your own key.
 - Typing 'exit' in chat or clicking the 'Exit' button will close the app
