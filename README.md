@@ -27,7 +27,6 @@ A simple App that uses the 'gpt-3.5-turbo-16k' model to create a GPT-Chatbot _(M
 - Open the folder and execute 'Update.bat' if you run it for the first time, this will install all needed stuff🖖
 - Watch the 'Update' script doing its magic🪄
 - For later instances, just use the 'Run.bat'👌
-- _(If you want to check for Updates, just run the 'Update.bat')_
 
 ## Functionalities
 - Normal Chat via Send button / Enter.
