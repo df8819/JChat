@@ -56,7 +56,7 @@ class JChat:
         self.root = tk.Tk()
         self.root.title("JChat")
         self.center_window(self.root)
-        self.root.resizable(0, 0)
+        self.root.resizable(height=None, width=None)
         self.font_family = "Segoe UI Emoji"
         self.font_size = 12
 
@@ -64,7 +64,7 @@ class JChat:
         frame.grid(sticky="nsew", padx=10, pady=10)
 
         self.conversation = scrolledtext.ScrolledText(frame, wrap='word')
-        self.conversation.configure(font=(self.font_family, self.font_size))
+        self.conversation.configure(font=(self.font_family, self.font_size), bg="#edf7f1")
         self.conversation.grid(sticky="nsew")
 
         self.text_input = tk.StringVar()
@@ -159,7 +159,7 @@ class JChat:
                                        font=(self.font_family, self.font_size))
         set_api_key_button.pack(padx=10, pady=10)
 
-        self.center_window(api_key_window)
+        self.center_window2(api_key_window)
         api_key_window.wait_window()  # Block until the window is destroyed
 
     def center_window(self, window):
@@ -170,6 +170,16 @@ class JChat:
         x = (screen_width // 2) - (window_width // 2)
         y = (screen_height // 3) - (window_height // 2)
         window.geometry(f"{window_width}x{window_height}+{x}+{y}")
+
+    def center_window2(self, window):
+        window_width = 400
+        window_height = 150
+        screen_width = window.winfo_screenwidth()
+        screen_height = window.winfo_screenheight()
+        x = (screen_width // 2) - (window_width // 2)
+        y = (screen_height // 3) - (window_height // 2)
+        window.geometry(f"{window_width}x{window_height}+{x}+{y}")
+
 
     def get_gpt_response(self, user_prompt):
         headers = {
@@ -265,8 +275,10 @@ class JChat:
                 response = self.get_gpt_response(user_message)
                 if response.status_code == 200:
                     completion = response.json()['choices'][0]['message']['content']
-                    self.conversation.insert(tk.END, "JChat: " + completion + '\n\n')
+                    self.conversation.insert(tk.END, "JChat: " + completion + '\n\n', 'blue-text')
                     self.conversation_history.append({'role': 'assistant', 'content': completion})
+                    self.conversation.insert(tk.END, '_' * 80, 'line')  # Add a visual line break
+                    self.conversation.insert(tk.END, '\n\n')
                     self.conversation.see(tk.END)
 
                     # Perform another command with the completion here
@@ -275,6 +287,12 @@ class JChat:
 
                 else:
                     print("An error occurred:", response.text)
+
+            # Change the line below to set your desired hex color
+            self.conversation.tag_configure('blue-text', foreground='#0707b0')  # Replace '#FF0000' with your hex color
+
+            # Configure the visual line tag
+            self.conversation.tag_configure('line', underline=True)
 
             threading.Thread(target=gpt_request).start()
 
