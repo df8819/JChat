@@ -19,7 +19,7 @@ A simple App that uses the 'gpt-3.5-turbo-16k' model to create a GPT-Chatbot _(M
 - Navigate to a folder you want JChat cloned to.
 - Click into the 'address bar', type 'cmd' and hit enter.
 - A 'CMD' window opens. You should see the path from your folder in the last line.
-- Copy the following code, insert it into the open 'CMD' window and hit enter:
+- Copy the following code, insert it into the open 'CMD' window and hit enter _(Right-Click acts as Ctrl C/V in CMD💡)_:
 
  ```git clone https://github.com/df8819/JChat.git```
 
