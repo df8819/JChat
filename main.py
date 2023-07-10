@@ -8,7 +8,6 @@ import openai
 import requests
 
 
-
 class JChat:
     def __init__(self):
         self.api_key = self.load_or_request_api_key()
@@ -27,7 +26,7 @@ class JChat:
             "Default": "Act as normal GPT4 instance: ",
             "(＾• ω •＾)": "Act as cute eGirl and ALWAYS/ONLY use UwU-speech and lots of kaomojies/emojies. Example: "
                          "'Act as cute anime-cat-giww awnd awways/onwy use uwu-speech awnd wots of kaomojies (✿ ♥‿♥) "
-                         "(´• ω •`) /emojies 💖😺': ",
+                         "(´• ω •`) awnd diffewent emojies 💖😺✨🎇🐱‍👤': ",
             "Mad Scientist": "Act as mean sarcastic Einstein and answer ALWAYS/ONLY with intrinsic lyrically spoken "
                              "formulas: ",
             "SciFi Commander": "Act as advanced AGI-Commander onboard of a space frigate and ALWAY/ONLY answer in "
@@ -64,7 +63,7 @@ class JChat:
         frame.grid(sticky="nsew", padx=10, pady=10)
 
         self.conversation = scrolledtext.ScrolledText(frame, wrap='word')
-        self.conversation.configure(font=(self.font_family, self.font_size), bg="#edf7f1")
+        self.conversation.configure(font=(self.font_family, self.font_size), bg='#edfcf0')
         self.conversation.grid(sticky="nsew")
 
         self.text_input = tk.StringVar()
@@ -100,7 +99,6 @@ class JChat:
         api_key_button = tk.Button(btn_frame, text="API Key", command=self.set_api_key,
                                    font=(self.font_family, self.font_size))
         api_key_button.pack(side="right", padx=10, pady=10)
-
 
         self.root.grid_rowconfigure(0, weight=1)
         self.root.grid_columnconfigure(0, weight=1)
@@ -180,7 +178,6 @@ class JChat:
         y = (screen_height // 3) - (window_height // 2)
         window.geometry(f"{window_width}x{window_height}+{x}+{y}")
 
-
     def get_gpt_response(self, user_prompt):
         headers = {
             'Content-Type': 'application/json',
@@ -257,7 +254,6 @@ class JChat:
             self.send_message(auto=True)
 
     def send_message(self, event=None, auto=False):
-
         if not auto:
             user_message = self.text_input.get()
         else:
@@ -268,14 +264,19 @@ class JChat:
                 self.root.destroy()
         else:
             self.text_input.set('')
-            self.conversation.insert(tk.END, "You: " + user_message + '\n\n')
+            self.conversation.insert(tk.END, "You: ", 'bold-text')
+            self.conversation.insert(tk.END, user_message + '\n\n', 'red-text')
             self.conversation_history.append({'role': 'user', 'content': user_message})
+
+            # Change the line below to set your desired hex color
+            self.conversation.tag_configure('red-text', foreground='#b00707')  # Replace '#FF0000' with your hex color
 
             def gpt_request():
                 response = self.get_gpt_response(user_message)
                 if response.status_code == 200:
                     completion = response.json()['choices'][0]['message']['content']
-                    self.conversation.insert(tk.END, "JChat: " + completion + '\n\n', 'blue-text')
+                    self.conversation.insert(tk.END, "JChat: ", 'bold-text')
+                    self.conversation.insert(tk.END, completion + '\n\n', 'blue-text')
                     self.conversation_history.append({'role': 'assistant', 'content': completion})
                     self.conversation.insert(tk.END, '_' * 80, 'line')  # Add a visual line break
                     self.conversation.insert(tk.END, '\n\n')
@@ -293,6 +294,9 @@ class JChat:
 
             # Configure the visual line tag
             self.conversation.tag_configure('line', underline=True)
+
+            # Configure the bold text tag
+            self.conversation.tag_configure('bold-text', font=(self.font_family, self.font_size, 'bold'))
 
             threading.Thread(target=gpt_request).start()
 

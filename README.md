@@ -1,12 +1,12 @@
 # JChat - A Python project for fun/educational purposes✨
-The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot _(Model-Selector will be implemented Soon-ish™)_
+The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot _(Model-Selector will be implemented Soon-ish™ 🙈)_
 
 ## This app is for you when:
 - You have no experience with anything even remotely related to coding🧑‍💻
 - You don't want to fumble around with 15 different requirements and requisitions🙄
 - You want to play around with GPT in your own environment🤖
-- You want to learn how to code. This app is written in +-300 lines of code and has many features, functions and other interesting stuff to explore🎉 Download an IDE like [PyCharm Community Edition](https://www.jetbrains.com/pycharm/download/?section=windows), right click the 'JChat' folder and select 'Open Folder as PyCharm Project' to start exploring🔍
-- You're looking for a python-app with an already existing and working code-basis and a clicky Tkinter-GUI🫡
+- You want to learn how to code. This app is written in 350+ lines of code and has many features, functions and other interesting stuff to explore🎉 Download an IDE like [PyCharm Community Edition](https://www.jetbrains.com/pycharm/download/?section=windows), right click the 'JChat' folder and select 'Open Folder as PyCharm Project' to start exploring🔍
+- You're looking for a python-app with a clicky Tkinter-GUI instead of a console⚡
 
 ## Requirements
 - **NO** coding skills or knowledge required😎
@@ -32,7 +32,7 @@ The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot _(Model-Se
 ## Functionalities
 - Normal Chat via Send button / Enter.
 - 'Clear Chat' will clean up the Window _(does not delete saved chat conversation)_
-- Change the behavior. Messy but fun😅 _(Default will act as the 'As an AI language model...' we all love😋)_
+- Change the behavior. Messy but fun😅 _(Default will act as the 'AI language model...' we all love😋)_
 - Loop pre-defined answers endlessly. ❗WARNING❗ - This is an experimental feature and will burn your API limit FAST if not watched carefully! _('Cancel Loop' will immediately stop this function!)_
 - Click 'API Key' to insert your key. The app will not work without your own key.
 - Typing 'exit' in chat or clicking the 'Exit' button will close the app.
