@@ -1,5 +1,5 @@
 # JChat - A Python project for fun/educational purposes✨
-The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot _(Model-Selector will be implemented Soon-ish™ 🙈)_
+The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot _(Model-Selector will be implemented Soon-ish™)_🙈
 
 ## This app is for you when:
 - You have no experience with anything even remotely related to coding🧑‍💻
@@ -13,7 +13,7 @@ The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot _(Model-Se
 - [Python](https://www.python.org/downloads/) _(Check the option "Add python.exe to PATH" when you install it)_
 - [Git for Desktop](https://git-scm.com/downloads)
 - Know how to 'copy & paste' and press buttons on a 'keyboard & mouse'🤔
-- You need to have your own [GPT API-Key](https://platform.openai.com/account/api-keys) tho👀 That's not difficult in any means, but you need to have a paid plan from OpenAI. _(They won't charge you if you're below 5$ for your monthly API calls, which is nice and usually more than enough)_
+- You need to have your own [GPT API-Key](https://platform.openai.com/account/api-keys) tho👀 That's not difficult in any means, but you need to have a paid plan from OpenAI. _(They won't charge you if you're below 5$ for the first three months, which is nice and usually more than enough)_👍
 
 ## Setup / Execution
 - Navigate to a folder you want JChat cloned to.
@@ -32,7 +32,7 @@ The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot _(Model-Se
 ## Functionalities
 - Normal Chat via Send button / Enter.
 - 'Clear Chat' will clean up the Window _(does not delete saved chat conversation)_
-- Change the behavior. Messy but fun😅 _(Default will act as the 'AI language model...' we all love😋)_
+- Change the behavior. Messy but fun😅 _(Default will act as the 'AI language model...' we all love)_😋
 - Loop pre-defined answers endlessly. ❗WARNING❗ - This is an experimental feature and will burn your API limit FAST if not watched carefully! _('Cancel Loop' will immediately stop this function!)_
 - Click 'API Key' to insert your key. The app will not work without your own key.
 - Typing 'exit' in chat or clicking the 'Exit' button will close the app.
