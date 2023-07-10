@@ -55,7 +55,7 @@ class JChat:
         self.root = tk.Tk()
         self.root.title("JChat")
         self.center_window(self.root)
-        self.root.resizable(height=None, width=None)
+        self.root.resizable(height=False, width=False)
         self.font_family = "Segoe UI Emoji"
         self.font_size = 12
 
