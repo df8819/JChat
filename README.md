@@ -5,15 +5,15 @@ The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot _(Model-Se
 - You have no experience with anything even remotely related to coding🧑‍💻
 - You don't want to fumble around with 15 different requirements and requisitions🙄
 - You want to play around with GPT in your own environment🤖
-- You want to learn how to code. This app is written in 350+ lines of code and has many features, functions and other interesting stuff to explore🎉 Download an IDE like [PyCharm Community Edition](https://www.jetbrains.com/pycharm/download/?section=windows), right click the 'JChat' folder and select 'Open Folder as PyCharm Project' to start exploring🔍
-- You're looking for a python-app with a clicky Tkinter-GUI instead of a console⚡
+- You want to learn python. 350+ lines of code, many features, functions and other interesting stuff to explore🎉 Download an IDE like [PyCharm Community Edition](https://www.jetbrains.com/pycharm/download/?section=windows), right click the 'JChat' folder and select 'Open Folder as PyCharm Project' to start exploring🔍
+- You're looking for a python app with a clicky Tkinter-GUI instead of a console⚡
 
 ## Requirements
 - **NO** coding skills or knowledge required😎
 - [Python](https://www.python.org/downloads/) _(Check the option "Add python.exe to PATH" when you install it)_
 - [Git for Desktop](https://git-scm.com/downloads)
 - Know how to 'copy & paste' and press buttons on a 'keyboard & mouse'🤔
-- You need to have your own [GPT API-Key](https://platform.openai.com/account/api-keys) tho👀 That's not difficult in any means, but you need to have a paid plan from OpenAI. _(They won't charge you if you're below 5$ for the first three months, which is nice and usually more than enough)_👍
+- You need a [GPT API-Key](https://platform.openai.com/account/api-keys) tho👀 That's not difficult in any means, but you need to have a paid plan from OpenAI. _(They won't charge you if you're below 5$ for the_ _first three months, which is nice and usually more than enough)_👍
 
 ## Setup / Execution
 - Navigate to a folder you want JChat cloned to.
