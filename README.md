@@ -23,7 +23,7 @@ A simple App that uses the 'gpt-3.5-turbo-16k' model to create a GPT-Chatbot _(M
 
  ```git clone https://github.com/df8819/JChat.git```
 
-- The repository is now cloned _(downloaded/copied)_ to a new folder within the path you have chosen.
+- The repository is now cloned _(downloaded/copied)_ to a new folder within the path you have chosen. Close this 'CMD' Window.
 - Open the folder and execute 'Update.bat' if you run it for the first time, this will install all needed stuff🖖
 - Watch the 'Update' script doing its magic🪄
 - For later instances, just use the 'Run.bat'👌
