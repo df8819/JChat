@@ -23,19 +23,20 @@ A simple App that uses the 'gpt-3.5-turbo-16k' model to create a GPT-Chatbot _(M
 
  ```git clone https://github.com/df8819/JChat.git```
 
-- The repository is now cloned to a new folder within the path you have chosen.
+- The repository is now cloned _(downloaded/copied)_ to a new folder within the path you have chosen.
 - Open the folder and execute 'Update.bat' if you run it for the first time, this will install all needed stuff🖖
 - Watch the 'Update' script doing its magic🪄
 - For later instances, just use the 'Run.bat'👌
+- _(If you want to check for Updates, just run the 'Update.bat')_
 
 ## Functionalities
-- Normal Chat via Send button / Enter
-- Clear Chat to clean up the Window _(does not delete saved chat conversation)_
-- Change the behavior. Messy but fun😅 _(Default will act as the 'As an AI language model...' we all love😋)
-- Loop pre-defined answers endlessly. ❗WARNING❗ - This is an experimental feature and will burn your API limits if not watched carefully! _('Cancel Loop' will immediately stop this function!)_
+- Normal Chat via Send button / Enter.
+- 'Clear Chat' will clean up the Window _(does not delete saved chat conversation)_
+- Change the behavior. Messy but fun😅 _(Default will act as the 'As an AI language model...' we all love😋)_
+- Loop pre-defined answers endlessly. ❗WARNING❗ - This is an experimental feature and will burn your API limit FAST if not watched carefully! _('Cancel Loop' will immediately stop this function!)_
 - Click 'API Key' to insert your key. The app will not work without your own key.
-- Typing 'exit' in chat or clicking the 'Exit' button will close the app
+- Typing 'exit' in chat or clicking the 'Exit' button will close the app.
 
 ## End note
-- Feel free to contact me in any regards
+- Feel free to contact me if you have any questions.
 - Have fun🤗
