@@ -1,5 +1,5 @@
 # JChat - A Python project for fun/educational purposes✨
-The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot _(Model-Selector will be implemented Soon-ish™)_🙈
+The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot <em>(Model-Selector will be implemented Soon-ish™)</em>🙈
 
 ## This app is for you when:
 - You have no experience with anything even remotely related to coding🧑‍💻
@@ -15,7 +15,7 @@ The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot _(Model-Se
 - [Git for Desktop](https://git-scm.com/downloads)
 - Know how to 'copy & paste' and press buttons on a 'keyboard & mouse'🤔
 - You need a [GPT API-Key](https://platform.openai.com/account/api-keys) tho👀 That's not difficult in any means, but you need to have a paid plan from OpenAI.
-<em>(They won't charge you if you're below 5$ for the first three months, which is nice and usually more than enough)<em>👍
+<em>(They won't charge you if you're below 5$ for the first three months, which is nice and usually more than enough)</em>👍
 
 ## Setup / Execution
 - Navigate to a folder you want JChat cloned to.
