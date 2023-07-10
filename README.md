@@ -1,17 +1,34 @@
-JChat is a simple chat application powered by OpenAI's GPT models. It allows users to engage in conversations with the chatbot and receive responses based on the given input.
+# JChat
+A simple App that uses the 'gpt-3.5-turbo-16k' model to create a GPT-Chatbot _(Model-Selector will be implemented)_
 
+## This app is for you when:
+- You have no experience with anything even remotely related to coding🧑‍💻
+- You want to play around with GPT in your own environment🤖
+- You want to learn how to code. This app is written in +-300 lines of code and has many features, functions and other interesting stuff to explore🎉
+- You're looking for a python-playground with an already existing and working basis🫡
 
+## Requirements
+- NO coding skills or knowledge required😎
+- [Python](https://www.python.org/downloads/) _(Check the option "Add python.exe to PATH" and click "Install now"!)_
+- [Git for Desktop](https://git-scm.com/downloads)
+- Know how to 'copy & paste' and press buttons on a 'Keyboard & Mouse'🤔
+- You need to have your own [GPT API-Key](https://platform.openai.com/account/api-keys) tho👀
 
-Functionalities:
+## Setup / Execution
+- Navigate to a folder you want JChat cloned to.
+- Click into the 'address bar', type 'cmd' and hit enter.
+- A 'CMD' window opens. You should see the path from your folder in the last line.
+- Copy the following code and hit enter:
+```git clone https://github.com/df8819/JChat.git```
+- The repository is now cloned to a new folder within the path you have chosen
+- Open the folder and execute 'Update.bat' if you run it for the first time, this will install all needed stuff🖖
+- Watch the 'Update' script doing its magic and start the App🪄
+- For later instances, just use the 'Run.bat'👌
 
-- Users can enter text messages and press "Send" or press the Enter key to send the message.
-- The chatbot responds with generated text based on the user's input.
-- The conversation history is displayed in a scrollable text area.
-- Users can clear the conversation history by clicking the "Clear" button.
-- Users can change the chatbot's behavior by clicking the "Behavior" button, which opens a selection window with predefined behaviors.
-- Users can loop pre defined answers by clicking the "Loop" button, which opens an entry field for the text to loop.
-- Users can Cancel the loop by clicking "Cancel Loop".
-- Users can exit the application by clicking the "Exit" button.
-
-
-Note: To use this application, ensure that the required libraries and dependencies are installed and that you have the necessary API key for OpenAI.
+## Functionalities
+- Normal Chat via Send button / Enter
+- Clear Chat to clean up the Window _(does not delete saved chat conversation)_
+- Change the behavior of JChat. Messy but fun😅 _(Default will act as the 'As an AI language model...' we all love😋)
+- Loop pre-defined answers endlessly. ❗WARNING❗ - This is an experimental feature and will burn your API limits if not watched carefully! _('Cancel Loop' will immediately stop this function!)_
+- Click 'API Key' to insert your key. The app will not work without your own key.
+- Typing 'exit' in chat or clicking the 'Exit' button will close the app
