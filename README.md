@@ -1,5 +1,5 @@
 # JChat
-A simple App that uses the 'gpt-3.5-turbo-16k' model to create a GPT-Chatbot _(Model-Selector will be implemented)_
+A simple App that uses the 'gpt-3.5-turbo-16k' model to create a GPT-Chatbot _(Model-Selector will be implemented Soon-ish™)_
 
 ## This app is for you when:
 - You have no experience with anything even remotely related to coding🧑‍💻
