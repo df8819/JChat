@@ -5,7 +5,7 @@ A simple App that uses the 'gpt-3.5-turbo-16k' model to create a GPT-Chatbot _(M
 - You have no experience with anything even remotely related to coding🧑‍💻
 - You don't want to fumble around with 15 different requirements and requisitions🙄
 - You want to play around with GPT in your own environment🤖
-- You want to learn how to code. This app is written in +-300 lines of code and has many features, functions and other interesting stuff to explore🎉 Download an IDE like [PyCharm COmmunity Edition](https://www.jetbrains.com/pycharm/download/?section=windows), right click the 'JChat' folder and select 'Open Folder as PyCharm Project' to start exploring🔍
+- You want to learn how to code. This app is written in +-300 lines of code and has many features, functions and other interesting stuff to explore🎉 Download an IDE like [PyCharm Community Edition](https://www.jetbrains.com/pycharm/download/?section=windows), right click the 'JChat' folder and select 'Open Folder as PyCharm Project' to start exploring🔍
 - You're looking for a python-app with an already existing and working code-basis and a clicky Tkinter-GUI🫡
 
 ## Requirements
