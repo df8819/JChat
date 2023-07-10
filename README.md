@@ -1,5 +1,5 @@
-# JChat
-A simple App that uses the 'gpt-3.5-turbo-16k' model to create a GPT-Chatbot _(Model-Selector will be implemented Soon-ish™)_
+# JChat - A Python project for fun/educational purposes✨
+The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot _(Model-Selector will be implemented Soon-ish™)_
 
 ## This app is for you when:
 - You have no experience with anything even remotely related to coding🧑‍💻
@@ -9,7 +9,7 @@ A simple App that uses the 'gpt-3.5-turbo-16k' model to create a GPT-Chatbot _(M
 - You're looking for a python-app with an already existing and working code-basis and a clicky Tkinter-GUI🫡
 
 ## Requirements
-- NO coding skills or knowledge required😎
+- **NO** coding skills or knowledge required😎
 - [Python](https://www.python.org/downloads/) _(Check the option "Add python.exe to PATH" when you install it)_
 - [Git for Desktop](https://git-scm.com/downloads)
 - Know how to 'copy & paste' and press buttons on a 'keyboard & mouse'🤔
@@ -21,11 +21,11 @@ A simple App that uses the 'gpt-3.5-turbo-16k' model to create a GPT-Chatbot _(M
 - A 'CMD' window opens. You should see the path from your folder in the last line.
 - Copy the following code, insert it into the open 'CMD' window and hit enter _(Right-Click acts as Ctrl C/V in CMD💡)_:
 
- ```git clone https://github.com/df8819/JChat.git```
+ **```git clone https://github.com/df8819/JChat.git```**
 
 - The repository is now cloned _(downloaded/copied)_ to a new folder within the path you have chosen. Close this 'CMD' Window.
 - Open the folder and execute 'Update.bat' if you run it for the first time, this will install all needed stuff🖖
-- Watch the 'Update' script doing its magic🪄
+- Watch the 'Update' script doing its magic✨
 - When the app opens for the first time, click 'API Key' and insert your key.
 - For later instances, just use the 'Run.bat'👌
 
