@@ -13,7 +13,8 @@ The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot _(Model-Se
 - [Python](https://www.python.org/downloads/) _(Check the option "Add python.exe to PATH" when you install it)_
 - [Git for Desktop](https://git-scm.com/downloads)
 - Know how to 'copy & paste' and press buttons on a 'keyboard & mouse'🤔
-- You need to have your own [GPT API-Key](https://platform.openai.com/account/api-keys) tho👀 That's not difficult in any means, but you need to have a paid plan from OpenAI. _(They won't charge you if you're below 5$ for your monthly API calls, which is nice and usually more than enough)_
+- You need to have your own [GPT API-Key](https://platform.openai.com/account/api-keys) tho👀
+  That's not difficult in any means, but you need to have a paid plan from OpenAI. _(They won't charge you if you're below 5$ for your monthly API calls, which is nice and usually more than enough)_
 
 ## Setup / Execution
 - Navigate to a folder you want JChat cloned to.
