@@ -23,7 +23,7 @@ The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot <em>(Model
 - A 'CMD' window opens. You should see the path from your folder in the last line.
 - Copy the following code, insert it into the open 'CMD' window and hit enter _(Right-Click acts as Ctrl C/V in CMD💡)_:
 
- **```git clone https://github.com/df8819/JChat.git```**
+```git clone https://github.com/df8819/JChat.git```
 
 - The repository is now cloned _(downloaded/copied)_ to a new folder within the path you have chosen. Close this 'CMD' Window.
 - Open the folder and execute 'Update.bat' if you run it for the first time, this will install all needed stuff🖖

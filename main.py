@@ -51,7 +51,6 @@ class JChat:
 
         self.pre_prompt = self.behaviors["Default"]
         self.conversation_history = [{'role': 'system', 'content': self.pre_prompt}]
-        self.conversation_history = [{'role': 'system', 'content': self.pre_prompt}]
         self.root = tk.Tk()
         self.root.title("JChat")
         self.center_window(self.root)
