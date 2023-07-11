@@ -1,5 +1,6 @@
 # JChat - A Python project for fun/educational purposes✨
-The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot <em>(Model-Selector will be implemented Soon-ish™)</em>🙈
+The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot
+<em>(Model-Selector will be implemented Soon-ish™)</em>🙈
 
 ## This app is for you when:
 - You have no experience with anything even remotely related to coding🧑‍💻
