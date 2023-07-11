@@ -62,7 +62,7 @@ class JChat:
         frame = tk.Frame(self.root)
         frame.grid(sticky="nsew", padx=10, pady=10)
 
-        self.conversation = scrolledtext.ScrolledText(frame, wrap='word')
+        self.conversation = scrolledtext.ScrolledText(frame, wrap='word', state='disabled')
         self.conversation.configure(font=(self.font_family, self.font_size), bg='#edfcf0')
         self.conversation.grid(sticky="nsew")
 
@@ -264,9 +264,11 @@ class JChat:
                 self.root.destroy()
         else:
             self.text_input.set('')
+            self.conversation.config(state='normal')  # Enable editing
             self.conversation.insert(tk.END, "You: ", 'bold-text')
             self.conversation.insert(tk.END, user_message + '\n\n', 'red-text')
             self.conversation_history.append({'role': 'user', 'content': user_message})
+            self.conversation.config(state='disabled')  # Disable editing
 
             # Change the line below to set your desired hex color
             self.conversation.tag_configure('red-text', foreground='#b00707')  # Replace '#FF0000' with your hex color
@@ -275,11 +277,13 @@ class JChat:
                 response = self.get_gpt_response(user_message)
                 if response.status_code == 200:
                     completion = response.json()['choices'][0]['message']['content']
+                    self.conversation.config(state='normal')  # Enable editing
                     self.conversation.insert(tk.END, "JChat: ", 'bold-text')
                     self.conversation.insert(tk.END, completion + '\n\n', 'blue-text')
                     self.conversation_history.append({'role': 'assistant', 'content': completion})
                     self.conversation.insert(tk.END, '_' * 80, 'line')  # Add a visual line break
                     self.conversation.insert(tk.END, '\n\n')
+                    self.conversation.config(state='disabled')  # Disable editing
                     self.conversation.see(tk.END)
 
                     # Perform another command with the completion here
