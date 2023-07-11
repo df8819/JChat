@@ -23,13 +23,13 @@ The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot
 - Navigate to a folder you want JChat cloned to.
 - Click into the 'address bar', type 'cmd' and hit enter.
 - A 'CMD' window opens. You should see the path from your folder in the last line.
-- Copy the following code, insert it into the open 'CMD' window and hit enter _(Right-Click acts as Ctrl C/V in CMD💡)_:
+- Copy the following code, insert it into the open 'CMD' window and hit enter _(Right-Click acts as Ctrl C|V in CMD💡)_:
 
 ```git clone https://github.com/df8819/JChat.git```
 
 - The repository is now cloned _(downloaded/copied)_ to a new folder within the path you have chosen.
 - Close this 'CMD' Window.
-- Open the folder and execute 'Update.bat' if you run it for the first time, this will install all needed stuff🖖
+- Open the folder and execute 'Update.bat' if you run it for the first time🖖
 - Watch the 'Update' script do its magic✨
 - When the app opens for the first time, click 'API Key' and insert your key.
 - For later instances, just use the 'Run.bat'👌
