@@ -1,6 +1,2 @@
-json
-os
-threading
-tkinter
 openai
 requests
