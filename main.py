@@ -69,6 +69,7 @@ class JChat:
         entry_field = tk.Entry(self.root, textvariable=self.text_input, font=(self.font_family, self.font_size))
         entry_field.bind('<Return>', self.send_message)
         entry_field.grid(sticky="we", padx=10)
+        entry_field.focus_set() # Set focus to the entry field
 
         btn_frame = tk.Frame(self.root)
         btn_frame.grid(sticky="we", padx=10, pady=5)
@@ -186,7 +187,8 @@ class JChat:
         self.conversation_history.append({'role': 'user', 'content': user_prompt})
 
         data = {
-            'model': 'gpt-3.5-turbo-16k-0613',
+            # 'model': 'gpt-4',
+            'model': 'gpt-3.5-turbo-16k',
             'messages': self.conversation_history,
             'temperature': 0.7,
             'top_p': 0.9,

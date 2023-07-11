@@ -27,7 +27,7 @@ The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot <em>(Model
 
 - The repository is now cloned _(downloaded/copied)_ to a new folder within the path you have chosen. Close this 'CMD' Window.
 - Open the folder and execute 'Update.bat' if you run it for the first time, this will install all needed stuff🖖
-- Watch the 'Update' script doing its magic✨
+- Watch the 'Update' script do its magic✨
 - When the app opens for the first time, click 'API Key' and insert your key.
 - For later instances, just use the 'Run.bat'👌
 
