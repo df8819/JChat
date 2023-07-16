@@ -324,8 +324,10 @@ class JChat:
     def clear_conversation(self):
         confirmed = messagebox.askyesno("Clear Conversation", "Are you sure you want to clear the conversation?")
         if confirmed:
+            self.conversation.config(state='normal')  # Enable editing
             self.conversation.delete('1.0', tk.END)
-
+            self.conversation.config(state='disabled')  # Disable editing
+            
     def exit_app(self):
         if messagebox.askokcancel("Quit", "Do you really want to quit?"):
             self.root.quit()
