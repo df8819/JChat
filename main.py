@@ -22,6 +22,9 @@ class JChat:
         self.loop_thread = None  # to store the loop thread
         self.loop_active = False  # to keep track if the loop is active
 
+        # self.models = ["gpt-3.5-turbo", "gpt-4"]  # List of models
+        # self.model = self.models[0]  # Default model
+
         self.behaviors = {
             "Default": "Act as normal GPT4 instance: ",
 
@@ -327,7 +330,7 @@ class JChat:
             self.conversation.config(state='normal')  # Enable editing
             self.conversation.delete('1.0', tk.END)
             self.conversation.config(state='disabled')  # Disable editing
-            
+
     def exit_app(self):
         if messagebox.askokcancel("Quit", "Do you really want to quit?"):
             self.root.quit()
