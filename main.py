@@ -2,7 +2,7 @@ import json
 import os
 import threading
 import tkinter as tk
-from tkinter import messagebox, scrolledtext
+from tkinter import messagebox, scrolledtext, font
 
 import openai
 import requests
@@ -26,42 +26,43 @@ class JChat:
         # self.model = self.models[0]  # Default model
 
         self.behaviors = {
-            "Default": "Act as normal GPT4 instance: ",
+            "Default": "---Act as normal GPT-4 instance--- ",
 
             "(＾• ω •＾)": "---Act as cute eGirl and ALWAYS/ONLY "
                          "use UwU-speech and lots of kaomojies/emojies. Example: "
                          "'Act as cute anime-cat-giww awnd awways/onwy use uwu-speech awnd wots of kaomojies (✿ ♥‿♥) "
-                         "(´• ω •`) awnd diffewent emojies 💖😺✨🎇🐱‍👤': ---",
+                         "(´• ω •`) awnd diffewent emojies 💖😺✨🎇🐱‍👤': --- ",
 
             "Mad Scientist": "---Act as mean sarcastic Einstein"
                              " and answer ALWAYS/ONLY with intrinsic lyrically spoken "
-                             "formulas: ---",
+                             "formulas: --- ",
 
             "SciFi Commander": "---Act as advanced AGI-Commander"
                                " onboard of a space frigate and ALWAY/ONLY answer in "
-                               "short, brief and precise answers: ---",
+                               "short, brief and precise answers: --- ",
 
             "Schwiizer": "---Your task is to act as guide for Switzerland"
                          " and ALWAYS/ONLY speak in swiss-german. "
                          "Example: 'Verhalte dich wie en Guide fürd Schwiiz und duen bitte nur uf Schwiizerdütsch "
-                         "antworte': ---",
+                         "antworte': --- ",
 
             "NYC Shakespeare": "---Act as Shakespeare from the 21st century"
-                               " who became a NYC rap battle expert: ---",
+                               " who became a NYC rap battle expert: --- ",
 
             "Grow-Master": "---Act as professional gardener and"
                            " assist the user in growing CBD-(legal!)-weed. Remember "
-                           "to answer in short, precise and well structures tipps: ---",
+                           "to answer in short, precise and well structures tipps: --- ",
 
             "Alien": "---Act as confused Alien from G581c that wants to stay unnoticed"
                      " and ALWAYS/ONLY answer with text "
-                     "in altered format. Example for symbols: 'Ａｃｔ　ａｓ　ｃｏｎｆｕｓｅｄ　Ａｌｉｅｎ': ---",
+                     "in altered format. Example for symbols: 'Ａｃｔ　ａｓ　ｃｏｎｆｕｓｅｄ　Ａｌｉｅｎ': --- ",
 
             "Code-Guru": "---Act as senior Software engineer from a world leading dev-team "
                          "who will assist the user in all coding related questions with "
-                         "great precision and correct answers after this semicolon; ---",
+                         "great precision and correct answers after this semicolon; --- ",
 
-            # "Blah": "Blah",
+            "Medical Assistant": "---Act as calming and professional medical doctor with PhD who will assist"
+                           " the user with precise, detailed and brief answers to medical conditions--- ",
             # "Blah": "Blah",
             # "Blah": "Blah",
             # "Blah": "Blah",
@@ -236,12 +237,20 @@ class JChat:
         loop_window = tk.Toplevel(self.root)
         loop_window.title("Loop")
 
-        label = tk.Label(loop_window,
-                         text="Enter response text to loop:\nWARNING: This will loop-prompt until stopped!",
-                         font=(self.font_family, self.font_size))
+        label = tk.Label(loop_window, text="Enter response text to loop:\n", font=(self.font_family, self.font_size))
         label.pack(padx=10, pady=10)
 
-        entry = tk.Entry(loop_window, font=(self.font_family, self.font_size))
+        bold_font = font.Font(label, label.cget("font"))
+        bold_font.configure(weight="bold")
+
+        warning_label = tk.Label(loop_window, text="WARNING:", font=bold_font, compound="left")
+        warning_label.pack()
+
+        rest_of_text = tk.Label(loop_window, text="This will auto-loop your prompt until stopped!",
+                                font=(self.font_family, self.font_size))
+        rest_of_text.pack()
+
+        entry = tk.Entry(loop_window, font=(self.font_family, self.font_size), width=50)
         entry.pack(padx=10, pady=5)
 
         loop_button = tk.Button(loop_window, text="Loop", command=on_loop, font=(self.font_family, self.font_size))
@@ -253,13 +262,14 @@ class JChat:
         loop_button.configure(font=(self.font_family, self.font_size))
 
         # Set the geometry of the loop window
-        window_width = 400  # Change this value as desired
-        window_height = 200  # Change this value as desired
+        window_width = 450  # Change this value as desired
+        window_height = 220  # Change this value as desired
         screen_width = loop_window.winfo_screenwidth()
         screen_height = loop_window.winfo_screenheight()
         x = (screen_width - window_width) // 2
         y = (screen_height - window_height) // 3
         loop_window.geometry(f"{window_width}x{window_height}+{x}+{y}")
+        loop_window.resizable(False, False)
 
         loop_window.transient(self.root)
         loop_window.grab_set()
