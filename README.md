@@ -46,4 +46,4 @@ The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot
 - Feel free to contact me if you have any questions.
 - Have fun🤗
 
-![Main Window](/1689070302.png)
+![Main Window](/1689593951.png)
