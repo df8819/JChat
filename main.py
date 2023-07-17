@@ -150,35 +150,57 @@ class JChat:
                 return api_key
 
     def set_api_key(self):
+        # This function is called when the user wants to set a new API key
+
         def on_set_api_key():
+            # This function is called when the "Set API Key" button is clicked
+
             new_key = entry.get()
+            # Get the text from the Entry widget
+
             if new_key == "":
                 messagebox.showerror("Error", "API Key cannot be empty.")
+                # Show an error message if the Entry is empty
+
             else:
                 self.api_key = new_key
                 os.environ["OPENAI_API_KEY"] = self.api_key
                 openai.api_key = self.api_key
+                # Update the API key in various places
+
                 filename = os.path.join(os.path.dirname(__file__), 'apikey.json')
                 print(f"Writing API key to: {filename}")
+                # Decide where to save the API key on disk
+
                 with open(filename, 'w') as file:
                     json.dump({'api_key': new_key}, file)
+                # Write the new API key to disk
+
                 api_key_window.destroy()
+                # Close the window after the new API key is set
 
         api_key_window = tk.Toplevel(self.root)
         api_key_window.title("API Key")
+        # Create a new top-level window
 
         label = tk.Label(api_key_window, text="Enter new API Key: ", font=(self.font_family, self.font_size))
         label.pack(padx=10, pady=10)
+        # Add a label to the window
 
         entry = tk.Entry(api_key_window, font=(self.font_family, self.font_size))
         entry.pack(padx=10, pady=5)
+        # Add an Entry widget (text field) to the window
 
         set_api_key_button = tk.Button(api_key_window, text="Set API Key", command=on_set_api_key,
                                        font=(self.font_family, self.font_size))
         set_api_key_button.pack(padx=10, pady=10)
+        # Add a button to the window, which will call the on_set_api_key function when clicked
 
         self.center_window2(api_key_window)
+        # Center the window on the screen
+
         api_key_window.wait_window()  # Block until the window is destroyed
+        # Pause the program until the window is closed
 
     def center_window(self, window):
         window_width = 760
