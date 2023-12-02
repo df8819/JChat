@@ -1,4 +1,8 @@
-# JChat - A Python project for fun/educational purposes✨
+# This app moved entirely to W[WinFunct](https://github.com/df8819/WinFunct)
+
+---
+
+## JChat - A Python project for fun/educational purposes✨
 The App uses the 'gpt-3.5-turbo-16k' model as basis for a GPT-Chatbot
 
 <em>(Model-Selector will be implemented Soon-ish™)</em>🙈
