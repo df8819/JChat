@@ -1,5 +1,8 @@
-# This app moved entirely to W[WinFunct](https://github.com/df8819/WinFunct)
+# This app moved entirely to [WinFunct](https://github.com/df8819/WinFunct)
 
+---
+---
+---
 ---
 
 ## JChat - A Python project for fun/educational purposes✨
